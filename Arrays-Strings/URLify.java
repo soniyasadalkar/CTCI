@@ -7,7 +7,7 @@ class URLify{
 		System.out.println("Orginal String: "+input);
 		System.out.println("URLified String: "+ Arrays.toString(urlified_str));
 	}
-
+	/* Hints : traverse the input string in reverse */
 	public static char[] getUrlifiedStr(char[] input, int truelength){
 		/* first count the number of true spaces */
 		int spaceCount = 0;
