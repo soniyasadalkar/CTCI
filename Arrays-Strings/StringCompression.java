@@ -6,7 +6,8 @@ class StringCompression
 	}
 
 	public static String getCompressedString(String input){
-		StringBuilder compressed_str = new StringBuilder();
+		/* Use StringBuilder instead of String because of the repetitive append operation which is costly for String */
+		StringBuilder compressed_str = new StringBuilder(); 
 		int countCompress = 0;
 		for( int i  = 0; i < input.length() ; ++i){
 			countCompress++;
