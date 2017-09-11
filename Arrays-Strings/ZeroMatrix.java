@@ -3,11 +3,59 @@ class ZeroMatrix{
 	public static void main(String args[]){
 		int mat[][] = { {0, 2, 3, 6}, {4, 9, 6, 5} }; //, {7, 8, 9} };
 		System.out.println("BEFORE");
-		System.out.println(Arrays.toString(mat[0]));
 		displayMatrix(mat);
 		ReplaceZeros(mat);
 		System.out.println("AFTER");
-		displayMatrix(mat);	
+		displayMatrix(mat);
+		System.out.println("------------------------------------");
+		int mat2[][]  = 	{ {1,2,3,0} ,{0, 2, 3, 6}, {4, 9, 6, 5} };
+		System.out.println("BEFORE");
+		displayMatrix(mat2);
+		ReplaceZeros_v2(mat2);
+		System.out.println("AFTER");
+		displayMatrix(mat2);
+	}
+
+	public static void ReplaceZeros_v2(int[][] matrix){
+		boolean rowHasZero = false;
+		boolean colHasZero = false;
+		
+		for( int i = 0; i < matrix[0].length ; ++i){
+			if(matrix[0][i] == 0){
+				rowHasZero = true;
+				break;
+			}	
+		}
+		for( int i = 0; i < matrix.length; ++i ){
+			if( matrix[i][0] == 0 ){
+				colHasZero = true;
+				break;
+			}
+		}
+		
+		for( int i = 1; i < matrix.length; i++){
+			for( int j = 1; j < matrix[0].length; ++j){
+				if( matrix[i][j] == 0){
+					matrix[0][j] = 0;
+					matrix[i][0] = 0;
+					System.out.println("here");
+				}
+			}
+		}
+		
+		for( int i = 1; i < matrix.length ; i++){
+			if( matrix[i][0] == 0 )
+				nullifyRow(matrix, i);	
+		}
+		for( int i = 1; i < matrix[0].length; i++){
+			if( matrix[0][i] == 0)
+				nullifyColumn(matrix, i);
+		}
+		
+		if( rowHasZero )
+			nullifyRow(matrix, 0);
+		if(colHasZero)
+			nullifyColumn(matrix, 0);
 	}
 
 	public static void ReplaceZeros(int[][] matrix){
