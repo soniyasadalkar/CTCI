@@ -1,4 +1,4 @@
-class LinkedList{
+public class LinkedList{
 	Node head;
 
 	class Node{
@@ -65,6 +65,13 @@ class LinkedList{
 		}
 	}
 
+	public static void createList(LinkedList list, int[] arr){
+		
+		for( int element : arr){
+			list.addAtEnd(element);
+		}
+	}
+
 	public static void main(String args[]){
 		LinkedList list = new LinkedList();
 		list.addAtBeginning(1);
@@ -83,5 +90,10 @@ class LinkedList{
 		list.print();
 		list.delete(93);
 		list.print();
+
+		LinkedList list2 = new LinkedList();
+		int[] elements = new int[]{11,22,33,44,55};
+		createList(list2, elements);
+		list2.print();
 	}
 }
