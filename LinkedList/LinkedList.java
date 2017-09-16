@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class LinkedList{
 	Node head;
 
@@ -72,7 +74,69 @@ public class LinkedList{
 		}
 	}
 
+	public static void removeDuplicates(LinkedList list){
+		Node prev = null;
+		HashSet<Integer> set = new HashSet<Integer>();
+		Node temp = list.head;
+		while( temp != null){
+			if( set.contains(temp.data)){
+				prev.next = temp.next;
+			}else{
+				set.add(temp.data);
+				prev = temp;
+			}
+			temp = temp.next;
+		}	
+	}
+
+	public static void removeDuplicatesWithoutExtraSpace(LinkedList list){
+		Node current = list.head;
+		while( current != null){
+			Node runner = current;
+			while( runner.next != null){
+				if( runner.next.data == current.data)
+					runner.next = runner.next.next;
+				else
+					runner = runner.next;
+			}
+			current = current.next;
+		}
+	}
+
+	class Index{
+		public int value = 0;
+	}
+	public static Node kthNodetoLast_R(Node head, int k, Index idx){
+		if(head == null)
+			return null;
+		Node node = kthNodetoLast_R(head.next, k, idx);
+		idx.value = idx.value + 1;
+		if( idx.value == k)
+			return head;
+		return node;
+	}	
+	public Node kthNodetoLast_R(LinkedList list, int k){
+		Index idx = new Index();
+		Node node = kthNodetoLast_R(this.head, k, idx);
+		return node;
+	}
+	public static Node kthNodetoLast_I(LinkedList list, int k){
+		Node p1 = list.head;
+		Node p2 = list.head;
+		for(int i = 0; i < k; ++i){
+			if( p1 == null)
+				return null;
+			p1 = p1.next;
+		}
+		while( p1 != null){
+			p1 = p1.next;
+			p2 = p2.next;
+		}
+		return p2;	
+	}
+
 	public static void main(String args[]){
+		/*
 		LinkedList list = new LinkedList();
 		list.addAtBeginning(1);
 		list.addAtBeginning(2);
@@ -90,10 +154,30 @@ public class LinkedList{
 		list.print();
 		list.delete(93);
 		list.print();
+		*/
 
 		LinkedList list2 = new LinkedList();
-		int[] elements = new int[]{11,22,33,44,55};
+		int[] elements = new int[]{11, 22, 33, 11, 44, 22, 11, 33, 55};
 		createList(list2, elements);
 		list2.print();
+		/*	
+		removeDuplicates(list2);
+		list2.print();
+		*/
+		removeDuplicatesWithoutExtraSpace(list2);
+		list2.print();
+
+		//kth Node to last
+		int k = 5;
+		Node node = kthNodetoLast_I(list2, k);
+		if( node != null)
+			System.out.println(k+"th node to last is "+node.data);
+		else
+			System.out.println("Out of bounds");
+		Node node_r = list2.kthNodetoLast_R(list2, k);
+		if( node_r != null)
+			System.out.println(k+"th node to last is "+node_r.data);
+		else
+			System.out.println("Out of bounds");
 	}
 }
