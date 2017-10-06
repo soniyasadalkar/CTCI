@@ -36,12 +36,12 @@ public class MyStack<T>{
 		return top == null;
 	}
 
-	public static void main(String args[]){
-		MyStack<Integer> stack = new MyStack<Integer>();
-		stack.push(10);
-		System.out.println(stack.peek());	
-		System.out.println(stack.pop());
-		System.out.println(stack.pop());
-		System.out.println(stack.isEmpty());		
-	}
+	// public static void main(String args[]){
+	// 	MyStack<Integer> stack = new MyStack<Integer>();
+	// 	stack.push(10);
+	// 	System.out.println(stack.peek());	
+	// 	System.out.println(stack.pop());
+	// 	System.out.println(stack.pop());
+	// 	System.out.println(stack.isEmpty());		
+	// }
 }
