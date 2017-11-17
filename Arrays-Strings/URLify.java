@@ -18,6 +18,7 @@ class URLify{
 				++spaceCount;
 		}
 		index = truelength + spaceCount * 2;
+		System.out.println("index: "+index);
 		if( truelength < input.length )
 			input[truelength] = '\0';
 

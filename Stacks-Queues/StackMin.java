@@ -31,6 +31,7 @@ public class StackMin extends MyStack<NodeWithMin>{
 		System.out.println("Min: "+stack.min()+" Max: "+stack.max());
 		stack.push(1);
 		System.out.println("Min: "+stack.min()+" Max: "+stack.max());
+		System.out.println("Pop: "+stack.pop()+" Min: "+stack.min()+" Max: "+stack.max());
 	}
 }
 
